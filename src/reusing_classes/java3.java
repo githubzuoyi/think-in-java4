@@ -1,5 +1,7 @@
 package reusing_classes;
 
+import java.math.BigInteger;
+
 class Amphibian{
 	void using(Amphibian i) {
 		System.out.println("up object to Amphibian success!");
@@ -33,6 +35,28 @@ public class java3 extends Amphibian{
 	    }
 	    return nums;
 	}
+	
+    public int[] plusOne(int[] digits) {
+        //method 1：把数组转化为整数，+1操作，转化为数组
+        //method 2：从后往前遍历数组
+        if(digits.length==0) return null;
+        long num = 0;
+        String s="";
+        for(int i = digits.length-1;i>=0;i--){
+            num += digits[i]*Math.pow(10,digits.length-i-1);
+        }
+        num = num+1;
+        System.out.println(num);
+        s = String.valueOf(num);
+        int[] finaldigits = new int[s.length()];
+        
+        for(int i = 0;i<s.length();i++){
+        	//System.out.println(s);
+        	finaldigits[i] = Integer.parseInt(String.valueOf(s.charAt(i)));
+        }
+        
+        return finaldigits;
+    }
 
 }
 
@@ -63,6 +87,30 @@ class blankfinal extends finalclass{
 		 
 	} 
 	
+}
+
+
+
+
+class Solution {
+    public int[] plusOne(int[] digits) {
+        //method 1：把数组转化为整数，+1操作，转化为数组
+        //method 2：从后往前遍历数组
+        if(digits.length==0) return null;
+        int num = 0;
+        String s="";
+        for(int i = digits.length-1;i>=0;i--){
+            num += digits[i]*Math.pow(10,digits.length-i-1);
+        }
+        num = num+1;
+        s = String.valueOf(num);
+        int[] finaldigits = new int[s.length()-1];
+        for(int i = 0;i<s.length();i++){
+            finaldigits[i] = (int)s.charAt(i);
+        }
+        
+        return finaldigits;
+    }
 }
 
 
